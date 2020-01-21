@@ -1,5 +1,7 @@
 package com.mx.jr.cendi.bienesconsumibles.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,18 +11,24 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-public class User {
+public class ValeEntrada {
     @Id
-    @Getter
-    @Setter
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Getter
     @Setter
-    private String name;
+    private String folio;
 
     @Getter
     @Setter
-    private String email;
+    private String descripcion;
+
+    @Getter
+    @Setter
+    private double cantidad;
+
+//    @Getter
+//    @Setter
+//    private Date create;
 }
