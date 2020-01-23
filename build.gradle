@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.2.3.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'org.joinfaces.dependency-management' version '4.1.1'
 }
 
 group = 'com.mx.jr.cendi'
@@ -13,23 +14,50 @@ repositories {
 }
 
 dependencies {
+
+
+	compile group: 'org.joinfaces', name: 'jsf-spring-boot-starter', version: '4.1.1'
+	compile group: 'org.joinfaces', name: 'primefaces-spring-boot-starter', version: '4.1.1'
+	
+	compile group: 'javax.enterprise', name: 'cdi-api', version: '2.0'
+
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation('com.ibm.db2:db2jcc4:10.1') 
-	implementation('com.zaxxer:HikariCP')
-    compile("com.h2database:h2")
-    testCompile("junit:junit")
-    compile group: 'org.apache.poi', name: 'poi', version: '4.1.1'
-    implementation('org.springframework.boot:spring-boot-starter-web') 
-    
-	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
 	
     annotationProcessor('org.projectlombok:lombok')
     compileOnly('org.projectlombok:lombok')
+	
+	implementation('com.zaxxer:HikariCP')
+	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+	
+	//
+	//implementation('com.ibm.db2:db2jcc4:10.1') 
+    //compile("com.h2database:h2")
+    //testCompile("junit:junit")
+    //compile group: 'org.apache.poi', name: 'poi', version: '4.1.1'
+  //  implementation('org.springframework.boot:spring-boot-starter-web')
+    // https://mvnrepository.com/artifact/org.joinfaces/jsf-spring-boot-starter
+// https://mvnrepository.com/artifact/javax.enterprise/cdi-api
+//compile group: 'com.sun.el', name: 'el-ri', version: '2.0'
+
+
+    
+	
     
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	
+	
+	//compile group: "org.primefaces", name: "primefaces", version: "7.0"
+	// https://mvnrepository.com/artifact/org.joinfaces/primefaces-spring-boot-starter
+	
+	//compile group: "com.sun.faces", name: "jsf-api", version: "2.+"
+	//compile group: "com.sun.faces", name: "jsf-impl", version: "2.+"
+	
+	// https://mvnrepository.com/artifact/javax.inject/javax.inject
+//compile group: 'javax.inject', name: 'javax.inject', version: '1'
+	
 }
 
 test {
