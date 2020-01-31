@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ValeEntradaCreateDlg" widgetVar="ValeEntradaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateValeEntradaTitle}">
+            <h:form id="ValeEntradaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{valeEntradaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateValeEntradaLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{valeEntradaController.selected.id}" title="#{bundle.CreateValeEntradaTitle_id}" required="true" requiredMessage="#{bundle.CreateValeEntradaRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateValeEntradaLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{valeEntradaController.selected.descripcion}" title="#{bundle.CreateValeEntradaTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateValeEntradaLabel_folio}" for="folio" />
+                        <p:inputText id="folio" value="#{valeEntradaController.selected.folio}" title="#{bundle.CreateValeEntradaTitle_folio}" />
+                        <p:outputLabel value="#{bundle.CreateValeEntradaLabel_cantidad}" for="cantidad" />
+                        <p:inputText id="cantidad" value="#{valeEntradaController.selected.cantidad}" title="#{bundle.CreateValeEntradaTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateValeEntradaRequiredMessage_cantidad}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{valeEntradaController.create}" value="#{bundle.Save}" update="display,:ValeEntradaListForm:datalist,:growl" oncomplete="handleSubmit(args,'ValeEntradaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ValeEntradaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

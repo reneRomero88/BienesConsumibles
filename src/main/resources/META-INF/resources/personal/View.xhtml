@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PersonalViewDlg" widgetVar="PersonalViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewPersonalTitle}">
+            <h:form id="PersonalViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{personalController.selected != null}">
+                        <h:outputText value="#{bundle.ViewPersonalLabel_id}"/>
+                        <h:outputText value="#{personalController.selected.id}" title="#{bundle.ViewPersonalTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewPersonalLabel_clave}"/>
+                        <h:outputText value="#{personalController.selected.clave}" title="#{bundle.ViewPersonalTitle_clave}"/>
+                        <h:outputText value="#{bundle.ViewPersonalLabel_nombre}"/>
+                        <h:outputText value="#{personalController.selected.nombre}" title="#{bundle.ViewPersonalTitle_nombre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="PersonalViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

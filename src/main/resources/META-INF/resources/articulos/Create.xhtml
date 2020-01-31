@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ArticulosCreateDlg" widgetVar="ArticulosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateArticulosTitle}">
+            <h:form id="ArticulosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{articulosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{articulosController.selected.id}" title="#{bundle.CreateArticulosTitle_id}" required="true" requiredMessage="#{bundle.CreateArticulosRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_clave}" for="clave" />
+                        <p:inputText id="clave" value="#{articulosController.selected.clave}" title="#{bundle.CreateArticulosTitle_clave}" />
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_claveAlmacen}" for="claveAlmacen" />
+                        <p:inputText id="claveAlmacen" value="#{articulosController.selected.claveAlmacen}" title="#{bundle.CreateArticulosTitle_claveAlmacen}" />
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_descripcion}" for="descripcion" />
+                        <p:inputText id="descripcion" value="#{articulosController.selected.descripcion}" title="#{bundle.CreateArticulosTitle_descripcion}" />
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_unidadMedida}" for="unidadMedida" />
+                        <p:inputText id="unidadMedida" value="#{articulosController.selected.unidadMedida}" title="#{bundle.CreateArticulosTitle_unidadMedida}" />
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_existencia}" for="existencia" />
+                        <p:inputText id="existencia" value="#{articulosController.selected.existencia}" title="#{bundle.CreateArticulosTitle_existencia}" required="true" requiredMessage="#{bundle.CreateArticulosRequiredMessage_existencia}"/>
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_inventarioInicial}" for="inventarioInicial" />
+                        <p:inputText id="inventarioInicial" value="#{articulosController.selected.inventarioInicial}" title="#{bundle.CreateArticulosTitle_inventarioInicial}" required="true" requiredMessage="#{bundle.CreateArticulosRequiredMessage_inventarioInicial}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{articulosController.create}" value="#{bundle.Save}" update="display,:ArticulosListForm:datalist,:growl" oncomplete="handleSubmit(args,'ArticulosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ArticulosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

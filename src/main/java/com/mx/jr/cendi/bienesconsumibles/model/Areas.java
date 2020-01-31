@@ -12,6 +12,9 @@ import lombok.Setter;
 
 @Entity
 public class Areas {
+
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

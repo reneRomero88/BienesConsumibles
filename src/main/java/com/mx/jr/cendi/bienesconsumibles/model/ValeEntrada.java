@@ -12,6 +12,9 @@ import lombok.Setter;
 
 @Entity
 public class ValeEntrada {
+
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

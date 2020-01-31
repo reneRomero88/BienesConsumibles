@@ -1,5 +1,7 @@
 package com.mx.jr.cendi.bienesconsumibles.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +18,7 @@ public class AreasServiceImpl implements AreasService {
     private AreasRepository areasRepository;
 
     @Override
-    public Boolean saveAreas(Areas area) {
+    public Boolean edit(Areas area) {
         try {
             areasRepository.save(area);
             return true;
@@ -26,7 +28,7 @@ public class AreasServiceImpl implements AreasService {
     }
     
     @Override
-    public Boolean deleteAreas(Areas area) {
+    public Boolean delete(Areas area) {
         try {
             areasRepository.delete(area);
             return true;
@@ -36,12 +38,21 @@ public class AreasServiceImpl implements AreasService {
     }
 
     @Override
-    public Boolean findAreasById(String id) {
+    public Boolean find(String id) {
         try {
             areasRepository.findById(id);
             return true;
         } catch (Exception e) {
             return false;
+        }
+    }
+
+    @Override
+    public List<Areas> findAll() {
+        try {
+            return areasRepository.findAll();
+        } catch (Exception e) {
+            return null;
         }
     }
 }
