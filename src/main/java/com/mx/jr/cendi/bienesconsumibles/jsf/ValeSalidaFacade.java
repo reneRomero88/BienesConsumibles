@@ -8,23 +8,28 @@ package com.mx.jr.cendi.bienesconsumibles.jsf;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.mx.jr.cendi.bienesconsumibles.model.Articulos;
 import com.mx.jr.cendi.bienesconsumibles.model.ValeSalida;
 
 /**
  *
  * @author usuario
  */
-public class ValeSalidaFacade extends AbstractFacade<ValeSalida> {
-    @PersistenceContext(unitName = "WebApplication1PU")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public ValeSalidaFacade() {
-        super(ValeSalida.class);
-    }
+@Repository
+public interface ValeSalidaFacade extends JpaRepository<ValeSalida, String> {
+//    @PersistenceContext(unitName = "WebApplication1PU")
+//    private EntityManager em;
+//
+//    @Override
+//    protected EntityManager getEntityManager() {
+//        return em;
+//    }
+//
+//    public ValeSalidaFacade() {
+//        super(ValeSalida.class);
+//    }
     
 }

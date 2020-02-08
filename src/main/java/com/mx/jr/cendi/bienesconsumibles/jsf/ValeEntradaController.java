@@ -14,16 +14,18 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.mx.jr.cendi.bienesconsumibles.model.ValeEntrada;
 import com.mx.jr.cendi.bienesconsumibles.util.JsfUtil;
 import com.mx.jr.cendi.bienesconsumibles.util.JsfUtil.PersistAction;
 
-@ManagedBean(name = "valeEntradaController")
-@SessionScoped
+@Named
 public class ValeEntradaController implements Serializable {
 
 //    @EJB
+    @Inject
     private ValeEntradaFacade ejbFacade;
     private List<ValeEntrada> items = null;
     private ValeEntrada selected;
@@ -56,18 +58,27 @@ public class ValeEntradaController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ValeEntradaCreated"));
+        persist(PersistAction.CREATE, //ResourceBundle.getBundle("/Bundle").getString(
+                "ValeEntradaCreated"
+                //)
+        );
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ValeEntradaUpdated"));
+        persist(PersistAction.UPDATE, //ResourceBundle.getBundle("/Bundle").getString(
+                "ValeEntradaUpdated"
+              //  )
+        );
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ValeEntradaDeleted"));
+        persist(PersistAction.DELETE, //ResourceBundle.getBundle("/Bundle").getString(
+                "ValeEntradaDeleted"
+                //)
+                );
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
@@ -86,9 +97,9 @@ public class ValeEntradaController implements Serializable {
             setEmbeddableKeys();
 //            try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    getFacade().save(selected);
                 } else {
-                    getFacade().remove(selected);
+                    getFacade().delete(selected);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
 //            } catch (EJBException ex) {
@@ -127,7 +138,7 @@ public class ValeEntradaController implements Serializable {
             }
             ValeEntradaController controller = (ValeEntradaController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "valeEntradaController");
-            return controller.getFacade().find(getKey(value));
+            return controller.getFacade().findById(value);
         }
 
         java.lang.Integer getKey(String value) {

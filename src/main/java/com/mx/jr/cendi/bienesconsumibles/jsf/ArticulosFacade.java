@@ -6,7 +6,11 @@
 package com.mx.jr.cendi.bienesconsumibles.jsf;
 
 import javax.persistence.EntityManager;
+import org.springframework.stereotype.Repository;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.mx.jr.cendi.bienesconsumibles.model.Articulos;
 
@@ -14,17 +18,18 @@ import com.mx.jr.cendi.bienesconsumibles.model.Articulos;
  *
  * @author usuario
  */
-public class ArticulosFacade extends AbstractFacade<Articulos> {
-    @PersistenceContext(unitName = "WebApplication1PU")
-    private EntityManager em;
+@Repository
+public interface ArticulosFacade extends JpaRepository<Articulos, String> {
+//    @PersistenceContext(unitName = "WebApplication1PU")
+//    private EntityManager em;
+//
+//    @Override
+//    protected EntityManager getEntityManager() {
+//        return em;
+//    }
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
-    }
-
-    public ArticulosFacade() {
-        super(Articulos.class);
-    }
+//    public ArticulosFacade() {
+//        super(Articulos.class);
+//    }
     
 }

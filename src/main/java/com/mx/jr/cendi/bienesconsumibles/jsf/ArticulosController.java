@@ -2,28 +2,26 @@ package com.mx.jr.cendi.bienesconsumibles.jsf;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
-//import javax.ejb.EJB;
-//import javax.ejb.EJBException;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.mx.jr.cendi.bienesconsumibles.model.Articulos;
 import com.mx.jr.cendi.bienesconsumibles.util.JsfUtil;
 import com.mx.jr.cendi.bienesconsumibles.util.JsfUtil.PersistAction;
 
-@ManagedBean(name = "articulosController")
-@SessionScoped
+@Named
 public class ArticulosController implements Serializable {
 
 //    @EJB
+    @Inject
     private ArticulosFacade ejbFacade;
     private List<Articulos> items = null;
     private Articulos selected;
@@ -56,18 +54,27 @@ public class ArticulosController implements Serializable {
     }
 
     public void create() {
-        persist(PersistAction.CREATE, ResourceBundle.getBundle("/Bundle").getString("ArticulosCreated"));
+        persist(PersistAction.CREATE, //ResourceBundle.getBundle("/Bundle").getString(
+                "ArticulosCreated"
+                //)
+                );
         if (!JsfUtil.isValidationFailed()) {
             items = null;    // Invalidate list of items to trigger re-query.
         }
     }
 
     public void update() {
-        persist(PersistAction.UPDATE, ResourceBundle.getBundle("/Bundle").getString("ArticulosUpdated"));
+        persist(PersistAction.UPDATE, //ResourceBundle.getBundle("/Bundle").getString(
+                "ArticulosUpdated"
+//                )
+        );
     }
 
     public void destroy() {
-        persist(PersistAction.DELETE, ResourceBundle.getBundle("/Bundle").getString("ArticulosDeleted"));
+        persist(PersistAction.DELETE, //ResourceBundle.getBundle("/Bundle").getString(
+                "ArticulosDeleted"
+//                )
+        );
         if (!JsfUtil.isValidationFailed()) {
             selected = null; // Remove selection
             items = null;    // Invalidate list of items to trigger re-query.
@@ -86,9 +93,9 @@ public class ArticulosController implements Serializable {
             setEmbeddableKeys();
 //            try {
                 if (persistAction != PersistAction.DELETE) {
-                    getFacade().edit(selected);
+                    getFacade().save(selected);
                 } else {
-                    getFacade().remove(selected);
+                    getFacade().delete(selected);
                 }
                 JsfUtil.addSuccessMessage(successMessage);
 //            } catch (EJBException ex) {
@@ -127,7 +134,7 @@ public class ArticulosController implements Serializable {
             }
             ArticulosController controller = (ArticulosController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "articulosController");
-            return controller.getFacade().find(getKey(value));
+            return controller.getFacade().findById(value);
         }
 
         java.lang.Integer getKey(String value) {
