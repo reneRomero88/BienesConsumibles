@@ -27,7 +27,7 @@ public class Areas {
     @Setter
     private String descripcion;
 
-//    @Getter
-//    @Setter
-//    private Date create;
+    @Getter
+    @Setter
+    private Date creacion;
 }

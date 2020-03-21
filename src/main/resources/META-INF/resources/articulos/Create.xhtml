@@ -26,6 +26,12 @@
                         <p:inputText id="existencia" value="#{articulosController.selected.existencia}" title="#{bundle.CreateArticulosTitle_existencia}" required="true" requiredMessage="#{bundle.CreateArticulosRequiredMessage_existencia}"/>
                         <p:outputLabel value="#{bundle.CreateArticulosLabel_inventarioInicial}" for="inventarioInicial" />
                         <p:inputText id="inventarioInicial" value="#{articulosController.selected.inventarioInicial}" title="#{bundle.CreateArticulosTitle_inventarioInicial}" required="true" requiredMessage="#{bundle.CreateArticulosRequiredMessage_inventarioInicial}"/>
+                        <p:outputLabel value="#{bundle.CreateArticulosLabel_inventarioInicial}" for="inventarioInicial" />
+                        
+<!--                         <p:calendar id="creacion" disabled="false" required="true" locale="pt" navigator="true" pattern="dd/MM/yyyy" showOn="button" value="#{articulosController.selected.creacion}" > -->
+<!-- 					        <f:convertDateTime pattern="dd/MM/yyyy"/> -->
+<!-- 					        <f:ajax event="blur" execute="@this" render="@this" /> -->
+<!-- 					    </p:calendar> -->
                     </p:panelGrid>
                     <p:commandButton actionListener="#{articulosController.create}" value="#{bundle.Save}" update="display,:ArticulosListForm:datalist,:growl" oncomplete="handleSubmit(args,'ArticulosCreateDialog');"/>
                     <p:commandButton value="#{bundle.Cancel}" onclick="ArticulosCreateDialog.hide()"/>

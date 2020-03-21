@@ -1,5 +1,7 @@
 package com.mx.jr.cendi.bienesconsumibles.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,7 +36,7 @@ public class Personal {
     @JoinColumn(name = "id")
     private Areas area;
 
-//    @Getter
-//    @Setter
-//    private LocalDate create;
+    @Getter
+    @Setter
+    private Date creacion;
 }

@@ -69,6 +69,12 @@
                             </f:facet>
                             <h:outputText value="#{item.inventarioInicial}"/>
                         </p:column>
+<!--                         <p:column> -->
+<!--                             <f:facet name="header"> -->
+<!--                                 <h:outputText value="#{bundle.ListArticulosTitle_inventarioInicial}"/> -->
+<!--                             </f:facet> -->
+<!--                             <h:outputText value="#{item.creacion}"/> -->
+<!--                         </p:column> -->
                         <f:facet name="footer">
                             <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{articulosController.prepareCreate}" update=":ArticulosCreateForm" oncomplete="PF('ArticulosCreateDialog').show()"/>
                             <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":ArticulosViewForm" oncomplete="PF('ArticulosViewDialog').show()" disabled="#{empty articulosController.selected}"/>

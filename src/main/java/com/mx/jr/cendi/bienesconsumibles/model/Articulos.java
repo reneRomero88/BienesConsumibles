@@ -1,12 +1,17 @@
 package com.mx.jr.cendi.bienesconsumibles.model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -43,7 +48,13 @@ public class Articulos {
     @Setter
     private double existencia;
 
-//    @Getter
-//    @Setter
-//    private Date create;
+    @Getter
+    @Setter
+    @CreationTimestamp
+    private Timestamp creacion;
+    
+    @Getter
+    @Setter
+    @UpdateTimestamp
+    private Timestamp modificacion;
 }

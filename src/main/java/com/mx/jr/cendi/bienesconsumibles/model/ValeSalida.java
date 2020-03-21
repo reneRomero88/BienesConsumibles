@@ -32,15 +32,15 @@ public class ValeSalida {
     @JoinColumn(name = "id")
     private Personal personal;
 
-//    @Getter
-//    @Setter
-//    private Date fecha;
+    @Getter
+    @Setter
+    private Date fecha;
 
     @Getter
     @Setter
     private double noVale;
 
-//    @Getter
-//    @Setter
-//    private Date create;
+    @Getter
+    @Setter
+    private Date creacion;
 }

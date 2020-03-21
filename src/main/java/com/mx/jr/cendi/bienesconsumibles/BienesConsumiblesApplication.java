@@ -34,6 +34,6 @@ public class BienesConsumiblesApplication {
         // print the text assigned to key "hello"
 //        System.out.println("" + rb.getString("ArticulosCreated"));
     }
-
+    //SET GLOBAL time_zone = '-3:00';
 }
     

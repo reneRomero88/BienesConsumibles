@@ -31,7 +31,7 @@ public class ValeEntrada {
     @Setter
     private double cantidad;
 
-//    @Getter
-//    @Setter
-//    private Date create;
+    @Getter
+    @Setter
+    private Date creacion;
 }
